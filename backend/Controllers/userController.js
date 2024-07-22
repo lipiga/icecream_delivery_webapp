@@ -1,0 +1,74 @@
+import userModel from "../Models/userModel.js";
+import jwt from 'jsonwebtoken'
+import { hash } from "argon2";
+import { verify } from "argon2";
+import validator from 'validator'
+
+//login user
+const loginUser = async (req,res)=>{
+    const {email,password} = req.body
+    try {
+        const user = await userModel.findOne({email});
+
+        if (!user) {
+            return res.json({success:false,message:"user doesn't exist"})
+        }
+
+        const isMatch = await argon2.verify(password,user.password)
+        if (!isMatch) {
+            return res.json({success:false,message:"incorrect password"})
+        }
+
+        const token = createToken(user._id)
+        res.json({success:true,token})
+    } catch (error) {
+        console.log(error)
+        res.json({success:false,message:"Error"})
+    }
+
+}
+
+const createToken = (id) =>{
+    return jwt.sign({id},process.env.JWT_SECRET)
+}
+
+//register user
+const registerUser = async(req,res)=>{
+    const {name,password,email} = req.body;
+    try {
+        //checking the email already exist
+        const exist = await userModel.findOne({email})
+        if (exist) {
+            return res.json({success:false,message:"email exist"})
+        }
+
+        //validating email format and strong password
+
+        if (!validator.isEmail(email)) {
+            return res.json({success:false,message:"please enter a valid email"})
+        }
+
+        if (password.length<8) {
+            return res.json({success:false,message:"password length should be  8 character"})
+        }
+
+        //hasing user password
+        const hashedPassword = await argon2.hash(password)
+
+        const newUser = new userModel({
+            name :name,
+            email:email,
+            password:hashedPassword
+        })
+        const user = await newUser.save()
+        const token = createToken(user._id)
+        res.json({success:true,token})
+
+
+    } catch (error) {
+        console.log(error);
+        res.json({success:false,message:"Error"})
+    }
+}
+
+export {loginUser,registerUser}
