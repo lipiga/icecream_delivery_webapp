@@ -14,7 +14,7 @@ const loginUser = async (req,res)=>{
             return res.json({success:false,message:"user doesn't exist"})
         }
 
-        const isMatch = await argon2.verify(password,user.password)
+        const isMatch = await verify(password,user.password)
         if (!isMatch) {
             return res.json({success:false,message:"incorrect password"})
         }
@@ -53,7 +53,7 @@ const registerUser = async(req,res)=>{
         }
 
         //hasing user password
-        const hashedPassword = await argon2.hash(password)
+        const hashedPassword = await hash(password)
 
         const newUser = new userModel({
             name :name,
