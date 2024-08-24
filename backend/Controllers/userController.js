@@ -14,7 +14,7 @@ const loginUser = async (req,res)=>{
             return res.json({success:false,message:"user doesn't exist"})
         }
 
-        const isMatch = await verify(password,user.password)
+        const isMatch = await verify(user.password,password)
         if (!isMatch) {
             return res.json({success:false,message:"incorrect password"})
         }
