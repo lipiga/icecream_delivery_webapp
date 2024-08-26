@@ -27,7 +27,11 @@ connectDB();
 //api endpoints
 app.use("/api/food",foodRouter)
 app.use("/images",(req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*'); // Allow all origins, or specify your frontend's origin
+  if (req.path.endsWith('.jpg') || req.path.endsWith('.jpeg')) {
+    res.setHeader('Content-Type', 'image/jpeg');
+  } else if (req.path.endsWith('.png')) {
+    res.setHeader('Content-Type', 'image/png');
+  }
   next();
 },express.static('Uploads'))
 app.use("/api/user",userRouter)
