@@ -6,7 +6,6 @@ import userRouter from "./Routes/userRoute.js"
 import "dotenv/config.js"
 import cartRouter from "./Routes/cartRoute.js"
 import orderRouter from "./Routes/orderRoute.js"
-import path from "path"
 
 
 //app config
@@ -15,25 +14,14 @@ const port = process.env.PORT || 4000
 
 //middleware
 app.use(express.json())
-app.use(cors({
-  origin: "https://mern-stack-main-frontend.onrender.com",
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization']
-}))
+app.use(cors())
 
 // db connection
 connectDB();
 
 //api endpoints
 app.use("/api/food",foodRouter)
-app.use("/images",(req, res, next) => {
-  if (req.path.endsWith('.jpg') || req.path.endsWith('.jpeg')) {
-    res.setHeader('Content-Type', 'image/jpeg');
-  } else if (req.path.endsWith('.png')) {
-    res.setHeader('Content-Type', 'image/png');
-  }
-  next();
-},express.static('Uploads'))
+app.use("/images",express.static('Uploads'))
 app.use("/api/user",userRouter)
 app.use("/api/cart",cartRouter)
 app.use("/api/order",orderRouter)
