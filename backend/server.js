@@ -29,10 +29,6 @@ app.use("/api/food",foodRouter)
 app.use("/images",(req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*'); // Allow all origins, or specify your frontend's origin
   next();
-},{
-  setHeaders: (res, path) => {
-    res.setHeader('Cache-Control', 'public, max-age=604800'); // Cache for 7 days
-  }
 },express.static('Uploads'))
 app.use("/api/user",userRouter)
 app.use("/api/cart",cartRouter)
