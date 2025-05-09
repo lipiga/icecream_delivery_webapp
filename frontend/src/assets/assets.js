@@ -21,7 +21,7 @@ import chocolatepops from './chocolatepops.jpg'
 import chocolatescoop from './chocolatescoop.jpg'
 import coffeepops from './coffeepops.jpg'
 import greenapplesorbet from './greenapplesorbet.jpg'
-import header from './header.png'
+import header from './header.jpg'
 import lemonsorbet from './lemonsorbet.jpg'
 import mangofamilypack from './Mangofamilypack.png'
 import mangokulfi from './mangokulfi.jpg'
@@ -62,8 +62,17 @@ import parcel from './parcel_icon.png'
 import bag from './bag_icon.png'
 import logout from './logout_icon.png'
 import selector from './selector_icon.png'
+import beverages from './beverages.jpg'
+import meat from './meat.jpg'
+import cereal from './cereal.jpg'
+import dairy from './dairy.jpg'
+import fruits from './fruits.jpg'
+import pantry from './pantry.jpeg'
+import snacks from './snacks.jpg'
+import vegetables from './vegetables.jpg'
 
 export const assets = {
+    beverages, meat, cereal, dairy, fruits, pantry, snacks, vegetables,
     add_icon_green,
     remove_icon_red,
     cross_icon,
@@ -131,36 +140,36 @@ export const assets = {
 
 export const menu_list = [
     {
-        menu_name : "Scoops",
-        menu_image : butterscotchscoop
+        menu_name : "Fruits",
+        menu_image : fruits
     },
     {
-        menu_name : "Cones",
-        menu_image : strawberrycone
+        menu_name : "Vegetables",
+        menu_image : vegetables
     },
     {
-        menu_name : "Popsicle",
-        menu_image : coffeepops
+        menu_name : "Beverages",
+        menu_image : beverages
     },
     {
-        menu_name : "Sundae",
-        menu_image : raspberrysundae
+        menu_name : "Meat",
+        menu_image : meat
     },
     {
-        menu_name :"Kulfi",
-        menu_image : badamkulfi
+        menu_name :"Dairy Products",
+        menu_image : dairy
     },
     {
-        menu_name : "Sorbet",
-        menu_image : watermelonsorbet
+        menu_name : "Pantry",
+        menu_image : pantry
     },
     {
-        menu_name : "Mochi",
-        menu_image : blueberrymochi
+        menu_name : "Snacks",
+        menu_image : snacks
     },
     {
-        menu_name : "FamilyPack",
-        menu_image : tuttifruttifamilypack
+        menu_name : "Cereal",
+        menu_image : cereal
     }
 ]
 

@@ -8,7 +8,7 @@ const Footer = () => {
         <div className='footer-content'>
             <div className='footer-content-left'>
                 <img src={assets.logo} alt=''/>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                  <p>© 2025 Grocify. Bringing you fresh, high-quality groceries at your convenience. Shop smart, eat fresh, and enjoy hassle-free delivery. Privacy Policy | Terms of Service</p>
                 <div className='footer-social-icons'>
                       <img src={assets.facebook} alt='' />
                       <img src={assets.twitter} alt='' />
@@ -28,12 +28,12 @@ const Footer = () => {
                 <h2>Get In Touch</h2>
                 <ul>
                     <li>+91 88709 22682</li>
-                    <li>chillspot@gmail.com</li>
+                    <li>grocify@gmail.com</li>
                 </ul>
             </div>
         </div>
         <hr/>
-        <p className='footer-copyright'>Copyright 2024 chillspot.com - All right reserved.</p>
+        <p className='footer-copyright'> ©Copyright 2025 grocify.com - All right reserved.</p>
     </div>
   )
 }

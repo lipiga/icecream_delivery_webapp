@@ -71,4 +71,17 @@ const registerUser = async(req,res)=>{
     }
 }
 
-export {loginUser,registerUser}
+const getUserById = async (req, res) => {
+    const { userID } = req.params;
+
+    try {
+        const user = await userModel.findById(userID);
+
+        return res.json({ success: true, data: user });
+    } catch (error) {
+        console.log(error);
+        return res.json({ success: false, message: "can't get user" });
+    }
+}
+
+export {loginUser,registerUser,getUserById}
